@@ -115,7 +115,7 @@ h_pool4 = max_pool_2x2(h_conv4)
 W_fc1 = weight_variable([6 * 6 * 64, 1024])
 b_fc1 = bias_variable([1024])
 
-h_pool2_flat = tf.reshape(h_pool2, [-1, 6*6*64])
+h_pool2_flat = tf.reshape(h_pool4, [-1, 6*6*64])
 h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)
 
 keep_prob = tf.placeholder(tf.float32)
