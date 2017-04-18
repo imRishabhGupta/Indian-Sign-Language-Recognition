@@ -149,8 +149,11 @@ for i in range(20000):
 
 BATCH_SIZE = 50
 predicted_lables = np.zeros(test_images.shape[0])
-for i in range(0,test_images.shape[0]//BATCH_SIZE):
-    predicted_lables[i*BATCH_SIZE : (i+1)*BATCH_SIZE] = predict.eval(feed_dict={x: test_images[i*BATCH_SIZE : (i+1)*BATCH_SIZE], 
-                                                                                keep_prob: 1.0})
+#for i in range(0,test_images.shape[0]//BATCH_SIZE):
+ #   predicted_lables[i*BATCH_SIZE : (i+1)*BATCH_SIZE] = predict.eval(feed_dict={x: test_images[i*BATCH_SIZE : (i+1)*BATCH_SIZE], 
+  #                                                                              keep_prob: 1.0})
 
+for i in range(0,test_images.shape[0]):
+    predicted_lables[i : (i+1)] = predict.eval(feed_dict={x: test_images[i : (i+1)], 
+                                                                                keep_prob: 1.0})
 np.savetxt('submission_cnn.csv', np.c_[range(1,len(test_images)+1),predicted_lables], delimiter=',', header = 'ImageId,Label', comments = '', fmt='%d')
