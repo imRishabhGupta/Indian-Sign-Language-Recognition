@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-
+import os
 
 
 sess = tf.InteractiveSession()
@@ -126,6 +126,20 @@ b_fc2 = bias_variable([24])
 
 y_conv = tf.matmul(h_fc1_drop, W_fc2) + b_fc2
 
+tf.add_to_collection('vars', W_conv1)
+tf.add_to_collection('vars', W_conv2)
+tf.add_to_collection('vars', W_conv3)
+tf.add_to_collection('vars', W_conv4)
+tf.add_to_collection('vars', b_conv1)
+tf.add_to_collection('vars', b_conv2)
+tf.add_to_collection('vars', b_conv3)
+tf.add_to_collection('vars', b_conv4)
+tf.add_to_collection('vars', W_fc1)
+tf.add_to_collection('vars', b_fc1)
+tf.add_to_collection('vars', W_fc2)
+tf.add_to_collection('vars', b_fc2)
+saver = tf.train.Saver()
+
 cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y_conv))
 
 train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
@@ -149,11 +163,10 @@ for i in range(20000):
 
 BATCH_SIZE = 50
 predicted_lables = np.zeros(test_images.shape[0])
-#for i in range(0,test_images.shape[0]//BATCH_SIZE):
- #   predicted_lables[i*BATCH_SIZE : (i+1)*BATCH_SIZE] = predict.eval(feed_dict={x: test_images[i*BATCH_SIZE : (i+1)*BATCH_SIZE], 
-  #                                                                              keep_prob: 1.0})
 
 for i in range(0,test_images.shape[0]):
     predicted_lables[i : (i+1)] = predict.eval(feed_dict={x: test_images[i : (i+1)], 
                                                                                 keep_prob: 1.0})
 np.savetxt('submission_cnn.csv', np.c_[range(1,len(test_images)+1),predicted_lables], delimiter=',', header = 'ImageId,Label', comments = '', fmt='%d')
+
+saver.save(sess, os.path.join(os.getcwd(), 'trained_variables2.ckpt'))
