@@ -100,9 +100,10 @@ def cluster_features(img_descs, training_idxs, cluster_model):
     training_descs = [img_descs[i] for i in training_idxs]
     all_train_descriptors = [desc for desc_list in training_descs for desc in desc_list]
     all_train_descriptors = np.array(all_train_descriptors)
+    np.savetxt("descriptors.csv", all_train_descriptors, delimiter=",")
 
     if all_train_descriptors.shape[1] != 64:
-        raise ValueError('Expected SIFT descriptors to have 64 features, got', all_train_descriptors.shape[1])
+        raise ValueError('Expected SIFT descriptors to have 128 features, got', all_train_descriptors.shape[1])
 
     print ('%i descriptors before clustering' % all_train_descriptors.shape[0])
 
@@ -164,24 +165,15 @@ for (dirpath,dirnames,filenames) in os.walk(path):
                 y.append(label)
         label=label+1
 
+
+
 #
 y=np.array(y)
 training_idxs, test_idxs, val_idxs = train_test_val_split_idxs(len(img_descs), 0.4, 0.0)
 
 #
-X, cluster_model = cluster_features(img_descs, training_idxs, MiniBatchKMeans(n_clusters=24))
-
-output = open('histogram_surf.pkl', 'wb')
-
-# Pickle dictionary using protocol 0.
-pickle.dump(X, output)
-output.close()
-
-outputy = open('label_surf.pkl', 'wb')
-
-# Pickle dictionary using protocol 0.
-pickle.dump(y, outputy)
-output.close()
+X, cluster_model = cluster_features(img_descs, training_idxs, MiniBatchKMeans(n_clusters=100))
+np.savetxt("histogram.csv", X, delimiter=",")
 
 X_train, X_test, X_val, y_train, y_test, y_val = perform_data_split(X, y, training_idxs, test_idxs, val_idxs)
 

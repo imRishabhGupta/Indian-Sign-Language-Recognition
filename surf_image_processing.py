@@ -24,7 +24,7 @@ def func(path):
     #skinGray=cv2.cvtColor(skin, cv2.COLOR_BGR2GRAY)
     
     #cv2.imshow("masked2",skin)
-    img2 = cv2.Canny(skin,150,150)
+    img2 = cv2.Canny(skin,100,100)
     #cv2.imshow("edge detection",img2)
     
     ''' 
@@ -37,7 +37,8 @@ def func(path):
     img2 = cv2.resize(img2,(256,256))
     kp, des = surf.detectAndCompute(img2,None)
     #print(len(des))
-    img2 = cv2.drawKeypoints(img2,kp[0:200],None,(0,0,255),4)
+    #print(len(des[0]))
+    img2 = cv2.drawKeypoints(img2,kp,None,(0,0,255),4)
     #plt.imshow(img2),plt.show()
     
     '''
@@ -56,4 +57,4 @@ def func(path):
     return des
     print(len(np.array(des.flatten()).tolist()[0:6400]))
 
-
+func('A.jpg')
