@@ -2,11 +2,13 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 import os
+import sklearn.metris as sm
 
 test  = pd.read_csv("test.csv")
-test_images = test.iloc[:,0:].values
+test_images = test.iloc[:,1:].values
 test_images = test_images.astype(np.float)
 test_images = np.multiply(test_images, 1.0 / 255.0)
+label_test = test[[0]].values.ravel()
 
 def weight_variable(shape):
   initial = tf.truncated_normal(shape, stddev=0.1)
@@ -80,5 +82,7 @@ print("evaluating")
 for i in range(0,test_images.shape[0]):
     predicted_lables[i : (i+1)] = predict.eval(feed_dict={x: test_images[i : (i+1)], 
                                                                                 keep_prob: 1.0})
-np.savetxt('submission_cnn1.csv', np.c_[range(1,len(test_images)+1),predicted_lables], delimiter=',', header = 'ImageId,Label', comments = '', fmt='%d')
+np.savetxt('submission_cnn111.csv', np.c_[range(1,len(test_images)+1),predicted_lables], delimiter=',', header = 'ImageId,Label', comments = '', fmt='%d')
 
+print(sm.accuracy_score(label_test,pred))
+print(sm.precision_score(label_test,pred,average='micro'))
