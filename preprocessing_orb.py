@@ -182,7 +182,7 @@ for (dirpath,dirnames,filenames) in os.walk(path):
             for file in files:
                 actual_path=path+"\\\\"+dirname+"\\\\"+file
                 print(actual_path)
-                des=func(actual_path)
+                des=func2(actual_path)
                 img_descs.append(des)
                 y.append(label)
         label=label+1
@@ -199,10 +199,9 @@ X_train, X_test, X_val, y_train, y_test, y_val = perform_data_split(X, y, traini
 
 
 #using classification methods
-predict_mlp(X_train, X_test,y_train, y_test)
 predict_svm(X_train, X_test,y_train, y_test)
 predict_knn(X_train, X_test,y_train, y_test)
 predict_lr(X_train, X_test,y_train, y_test)
 predict_nb(X_train, X_test,y_train, y_test)
-
+predict_mlp(X_train, X_test,y_train, y_test)
 
