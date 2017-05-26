@@ -143,6 +143,8 @@ def predict_svm(X_train, X_test, y_train, y_test):
     svc.fit(X_train,y_train)
     y_pred=svc.predict(X_test)
     calc_accuracy("SVM",y_test,y_pred)
+    np.savetxt('submission_surf_svm.csv', np.c_[range(1,len(y_test)+1),y_pred,y_test], delimiter=',', header = 'ImageId,Label,TrueLabel', comments = '', fmt='%d')
+    
 
 def predict_lr(X_train, X_test, y_train, y_test):
     clf = lr()
@@ -150,6 +152,8 @@ def predict_lr(X_train, X_test, y_train, y_test):
     clf.fit(X_train,y_train)
     y_pred=clf.predict(X_test)
     calc_accuracy("Logistic regression",y_test,y_pred)
+    np.savetxt('submission_surf_lr.csv', np.c_[range(1,len(y_test)+1),y_pred,y_test], delimiter=',', header = 'ImageId,Label,TrueLabel', comments = '', fmt='%d')
+    
 
 
 def predict_nb(X_train, X_test, y_train, y_test):
@@ -158,14 +162,18 @@ def predict_nb(X_train, X_test, y_train, y_test):
     clf.fit(X_train,y_train)
     y_pred=clf.predict(X_test)
     calc_accuracy("Naive Bayes",y_test,y_pred)
+    np.savetxt('submission_surf_nb.csv', np.c_[range(1,len(y_test)+1),y_pred,y_test], delimiter=',', header = 'ImageId,Label,TrueLabel', comments = '', fmt='%d')
+    
 
 
 def predict_knn(X_train, X_test, y_train, y_test):
-    clf=knn(n_neighbors=8)
+    clf=knn(n_neighbors=3)
     print("knn started")
     clf.fit(X_train,y_train)
     y_pred=clf.predict(X_test)
     calc_accuracy("K nearest neighbours",y_test,y_pred)
+    np.savetxt('submission_surf_knn.csv', np.c_[range(1,len(y_test)+1),y_pred,y_test], delimiter=',', header = 'ImageId,Label,TrueLabel', comments = '', fmt='%d')
+    
 
 def predict_mlp(X_train, X_test, y_train, y_test):
     clf=mlp()
@@ -199,9 +207,10 @@ X_train, X_test, X_val, y_train, y_test, y_val = perform_data_split(X, y, traini
 
 
 #using classification methods
-predict_mlp(X_train, X_test,y_train, y_test)
-predict_svm(X_train, X_test,y_train, y_test)
 predict_knn(X_train, X_test,y_train, y_test)
+#predict_mlp(X_train, X_test,y_train, y_test)
+predict_svm(X_train, X_test,y_train, y_test)
+
 predict_lr(X_train, X_test,y_train, y_test)
 predict_nb(X_train, X_test,y_train, y_test)
 

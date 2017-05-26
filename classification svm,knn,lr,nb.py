@@ -32,7 +32,7 @@ def run_svm():
 	#print clf.n_layers_
 	pred=clf.predict(x_)
 	#print(pred)
-	np.savetxt('submission_svm.csv', np.c_[range(1,len(test)+1),pred], delimiter=',', header = 'ImageId,Label', comments = '', fmt='%d')
+	np.savetxt('submission_svm.csv', np.c_[range(1,len(test)+1),pred,label_test], delimiter=',', header = 'ImageId,Label,TrueLabel', comments = '', fmt='%d')
 	calc_accuracy("SVM",label_test,pred)
 
 def run_lr():
@@ -42,7 +42,7 @@ def run_lr():
 	#print clf.n_layers_
 	pred=clf.predict(x_)
 	#print(pred)
-	np.savetxt('submission_lr.csv', np.c_[range(1,len(test)+1),pred], delimiter=',', header = 'ImageId,Label', comments = '', fmt='%d')
+	np.savetxt('submission_lr.csv', np.c_[range(1,len(test)+1),pred,label_test], delimiter=',', header = 'ImageId,Label,TrueLabel', comments = '', fmt='%d')
 	calc_accuracy("Logistic regression",label_test,pred)
 
 
@@ -54,7 +54,7 @@ def run_nb():
 	#print clf.n_layers_
 	pred=clf.predict(x_)
 	#print(pred)
-	np.savetxt('submission_nb.csv', np.c_[range(1,len(test)+1),pred], delimiter=',', header = 'ImageId,Label', comments = '', fmt='%d')
+	np.savetxt('submission_nb.csv', np.c_[range(1,len(test)+1),pred,label_test], delimiter=',', header = 'ImageId,Label,TrueLabel', comments = '', fmt='%d')
 	calc_accuracy("Naive Bayes",label_test,pred)
 
 
@@ -66,7 +66,7 @@ def run_knn():
 	#print clf.n_layers_
 	pred=clf.predict(x_)
 	#print(pred)
-	np.savetxt('submission_knn.csv', np.c_[range(1,len(test)+1),pred], delimiter=',', header = 'ImageId,Label', comments = '', fmt='%d')
+	np.savetxt('submission_knn.csv', np.c_[range(1,len(test)+1),pred,label_test], delimiter=',', header = 'ImageId,Label,TrueLabel', comments = '', fmt='%d')
 	calc_accuracy("K nearest neighbours",label_test,pred)
 
 run_svm()
