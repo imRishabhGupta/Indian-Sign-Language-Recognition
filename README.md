@@ -34,8 +34,12 @@ To run the project, perform following steps -
 
 ## Workflow
 
+<p align="center">
+  <br>
+  <img align="center" src="https://github.com/imRishabhGupta/Indian-Sign-Language-Recognition/blob/master/Visualization/flowchart.jpg">
+</p>
+
 ### Image Preprocessing
-Code for these steps are in file surf_image_processing.py.
 
 #### Segmentation:
 The main objective of the segmentation phase is to remove the background and noises, leaving only the Region of Interest (ROI), which is the only useful information in the image. This is achieved via Skin Masking defining the threshold on RGB schema and then converting RGB colour space to grey scale image. Finally Canny Edge technique is employed to identify and detect the presence of sharp discontinuities in an image, thereby detecting the edges of the figure in focus.  
@@ -72,7 +76,6 @@ Following Steps are followed to achieve this:
 
 * BoF represents each image as a histogram of features, in our case the histogram of 24 classes of sign language is generated.
 
-Code for step is present in file preprocessing_surf.py.
 #### Classifiers
 
 After obtaining the baf of features model, we are set to predict results for new raw images to test our model. Following classifiers are used :
@@ -83,7 +86,19 @@ After obtaining the baf of features model, we are set to predict results for new
 + Convolution Neaural Network
 
 ### Results
-Results can be visualized by running file visualize_submissions.py.
+Results can be visualized by running file [visualize_submissions.py](https://github.com/imRishabhGupta/Indian-Sign-Language-Recognition/blob/master/Visualization/visualize_submissions.py).
 
+#### Accuracy without SURF
 
+<p align="center">
+  <br>
+  <img align="center" src="https://github.com/imRishabhGupta/Indian-Sign-Language-Recognition/blob/master/Visualization/accuracy_without_surf.png">
+        <br>  
+  </p>
+  
+#### Accuracy with SURF
 
+<p align="center">
+  <br>
+  <img align="center" src="https://github.com/imRishabhGupta/Indian-Sign-Language-Recognition/blob/master/Visualization/acuracy_with_surf.png">
+</p>
