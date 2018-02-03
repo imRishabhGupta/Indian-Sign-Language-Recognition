@@ -10,7 +10,7 @@ We investigate different machine learning techniques like Support Vector Machine
 ## Getting Started
 ### Prerequisites
 Before running this project, make sure you have following dependencies - 
-* [Dataset](https://drive.google.com/folderview?id=0Bw239KLrN7zofmxvSmtsVHlrbkFRY1NwMjh2NFJGX1ZtY0lKOTR0REJnQnBUdVgyVDlMMkk&usp=sharing) (Download the images from this link)
+* [Dataset](https://drive.google.com/open?id=1wgXtF6QHKBuXRx3qxuf-o6aOmN87t8G-) (Download the images from this link)
 * [Python 2.7](https://www.python.org/downloads/)
 * [pip](https://pypi.python.org/pypi/pip)
 * [OpenCV](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_setup/py_setup_in_windows/py_setup_in_windows.html)
