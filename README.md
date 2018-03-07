@@ -102,3 +102,10 @@ Results can be visualized by running file [visualize_submissions.py](https://git
   <br>
   <img align="center" src="https://github.com/imRishabhGupta/Indian-Sign-Language-Recognition/blob/master/Visualization/acuracy_with_surf.png">
 </p>
+
+### Credits
+If there are any doubts or queries with the process, refer these posts, they are amazing -
+
++ [Post 1](https://ianlondon.github.io/blog/how-to-sift-opencv/)
++ [Post 2](https://ianlondon.github.io/blog/visual-bag-of-words/)
+
