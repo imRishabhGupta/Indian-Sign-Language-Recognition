@@ -26,8 +26,8 @@ Now, using ```pip install``` command, include following dependencies
 ### Running
 To run the project, perform following steps -
 
-1. Separate the test folder from images folder and rename the images folder to train.
-2. Make sure you have both of these folders and all python files in the same folder.
+1. Take the dataset folder and all the required python files and put them in the same folder.
+2. Required files are - surf_image_processing.py(Image preprocessing folder), preprocessing_surf.py (Bag of features folder), classification.py(classification folder) and visualize_submissions.py(visualization folder). 
 3. Run the preprocessing_surf.py file to make the csv file of training data set.
 4. classification.py contains the code for svm, knn and many other classifiers.
 5. cnn.py contains the code for deep learning as the name suggests. 
