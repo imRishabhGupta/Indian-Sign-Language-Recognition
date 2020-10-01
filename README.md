@@ -1,4 +1,4 @@
-# Indian-Sign-Language-Recognition
+# Indian Sign Language Recognition
 Sign Languages are a set of languages that use predefined actions and movements to convey a message. These languages are primarily developed to aid deaf and other verbally challenged people. They use a simultaneous and precise combination of movement of hands, orientation of hands, hand shapes etc. Different regions have different sign languages like American Sign Language, Indian Sign Language etc. We focus on Indian Sign language in this project.
 
 Indian Sign Language (ISL) is a sign language that is predominantly used in South Asian countries. It is sometimes referred to as Indo-Pakistani Sign Language (IPSL). There are many special features present in ISL that distinguish it from other Sign Languages. Features like Number Signs, Family Relationship, use of space etc. are crucial features of ISL. Also, ISL does not have any temporal inflection.
@@ -24,7 +24,7 @@ Now, using ```pip install``` command, include following dependencies
 + Tensorflow
 
 ### Running
-To run the project, perform following steps -
+To run the project, you need to perform following steps -
 
 1. Take the dataset folder and all the required python files and put them in the same folder.
 2. Required files are - surf_image_processing.py(Image preprocessing folder), preprocessing_surf.py (Bag of features folder), classification.py(classification folder) and visualize_submissions.py(visualization folder). 
